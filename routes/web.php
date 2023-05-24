@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\PostController;
+use App\Http\Controllers\Auth\RegistrarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,7 @@ Route::get('/', function () {
     return view('principal');
 });
 
-Route::get('/nosotros', function () {
-    return view('nosotros');
-});
+Route::get('/crear-cuenta', [RegistrarController::class, 'index']);
+Route::post('/crear-cuenta', [RegistrarController::class, 'store']);
+
+Route::get('/muro', [PostController::class, 'index'])->name('post.index');
